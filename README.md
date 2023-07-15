@@ -1,7 +1,7 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/DjalmaHenry/redlub-dashboard/assets/45500812/0aa63f5b-18a2-47f4-8b29-39deb742c220">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/DjalmaHenry/redlub-dashboard/assets/45500812/ce376102-5849-45d7-ae04-5e15193999b5">
-  <img alt="RedLub Dashboard" src="https://github.com/DjalmaHenry/redlub-dashboard/assets/45500812/ce376102-5849-45d7-ae04-5e15193999b5">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/DjalmaHenry/redlub-dashboard/assets/45500812/a0188fa0-1439-43d8-8c8f-31fb9c64959e">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/DjalmaHenry/redlub-dashboard/assets/45500812/cd79f983-5e40-4121-b557-009b8e692077">
+  <img alt="RedLub Dashboard" src="https://github.com/DjalmaHenry/redlub-dashboard/assets/45500812/cd79f983-5e40-4121-b557-009b8e692077">
 </picture>
 
 <div align="center"><strong>RedLub Dashboard</strong></div>
@@ -19,6 +19,7 @@ Technologies used:
 - Deployment - [Vercel](https://vercel.com/docs/concepts/next.js/overview)
 - Styling - [Tailwind CSS](https://tailwindcss.com)
 - Components - [Tremor](https://www.tremor.so)
+- Icons - [HeroIcons](https://heroicons.com/)
 - Analytics - [Vercel Analytics](https://vercel.com/analytics)
 - Linting - [ESLint](https://eslint.org)
 - Formatting - [Prettier](https://prettier.io)
