@@ -13,14 +13,15 @@ export default NextAuth({
         const user = {
           id: '1',
           name: 'Admin',
-          email: 'admin@example.com',
+          email: process.env.USER_EMAIL,
           image: 'https://example.com/avatar.jpg'
         };
 
+        // credentials.email, credentials.password verify by process.env.USER_EMAIL and process.env.USER_PASSWORD
         if (
           credentials &&
-          credentials.email === 'admin@example.com' &&
-          credentials.password === 'admin'
+          credentials.email === process.env.USER_EMAIL &&
+          credentials.password === process.env.USER_PASSWORD
         ) {
           return Promise.resolve(user);
         } else {

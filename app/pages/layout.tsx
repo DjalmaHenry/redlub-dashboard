@@ -7,11 +7,6 @@ import { useRouter } from 'next/navigation';
 import { SessionProvider } from 'next-auth/react';
 import { Analytics } from '@vercel/analytics/react';
 
-const metadata = {
-  title: 'RedLub Dashboard',
-  description: 'Used oil collection management dashboard'
-};
-
 export default function RootLayout({
   children
 }: {

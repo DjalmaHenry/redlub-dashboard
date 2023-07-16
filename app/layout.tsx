@@ -3,21 +3,21 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
-    title: 'RedLub Dashboard - Login',
+    title: 'RedLub Dashboard',
     description: 'used oil collection management dashboard'
-  };
+};
 
 export default async function RootLayout({
-  children
+    children
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className="h-full bg-gray-50">
-      <body className="h-full">
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" className="h-full bg-gray-50">
+            <body className="h-full">
+                {children}
+                <Analytics />
+            </body>
+        </html>
+    );
 }
