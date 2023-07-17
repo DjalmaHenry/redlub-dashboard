@@ -1,7 +1,9 @@
-import { Card, Title, Text } from '@tremor/react';
+import { Card, Title, Text, Button } from '@tremor/react';
 import { queryBuilder } from '../../lib/planetscale';
 import Search from '../components/search';
 import ClientsTable from '../components/clientsTable';
+import { PlusIcon } from '@heroicons/react/24/outline';
+import CreateButton from '../components/createButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,7 +25,10 @@ export default async function IndexPage({
       <Text>
         Lista de clientes cadastrados no sistema.
       </Text>
-      <Search />
+      <div className="flex items-center space-x-4">
+        <Search />
+        <CreateButton clients={clients} />
+      </div>
       <Card className="mt-6">
         <ClientsTable clients={clients} />
       </Card>
