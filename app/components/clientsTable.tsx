@@ -56,7 +56,7 @@ export default async function ClientsTable({ clients }: { clients: Client[] }) {
             </TableCell>
             <TableCell>
               <Text>
-                {client.lastCollection.toLocaleDateString('pt-BR')}
+                {new Date(client.lastCollection).toLocaleDateString('pt-BR')}
               </Text>
             </TableCell>
             <TableCell>

@@ -1,23 +1,23 @@
-import { Card, Title, Text, Button } from '@tremor/react';
-import { queryBuilder } from '../../lib/planetscale';
+'use client';
+import React, { use } from 'react';
+import { Card, Title, Text } from '@tremor/react';
 import Search from '../components/search';
 import ClientsTable from '../components/clientsTable';
-import { PlusIcon } from '@heroicons/react/24/outline';
 import CreateButton from '../components/createButton';
+import { useSearchParams } from 'next/dist/client/components/navigation';
+import { setSearchState } from '../hooks/useSearchState';
 
-export const dynamic = 'force-dynamic';
-
-export default async function IndexPage({
-  searchParams
-}: {
-  searchParams: { q: string };
-}) {
-  const search = searchParams.q ?? '';
-  const clients = await queryBuilder
-    .selectFrom('clients')
-    .select(['id', 'name', 'manager', 'email', 'phone', 'address', 'region', 'wasteType', 'payment', 'lastCollection', 'daysToNextCollection', 'observation'])
-    .where('name', 'like', `%${search}%`)
-    .execute();
+export default function IndexPage() {
+  const [searchParam] = useSearchParams()?.getAll('q') || [];
+  setSearchState(true);
+  let q = searchParam || '';
+  if (Array.isArray(q)) {
+    q = q[0] || '';
+  }
+  const data = use(
+    fetch(`/api/client/getAll?q=${encodeURIComponent(q)}`).then((r) => r.json())
+  );
+  setSearchState(false);
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
@@ -27,10 +27,10 @@ export default async function IndexPage({
       </Text>
       <div className="flex items-center space-x-4">
         <Search />
-        <CreateButton clients={clients} />
+        <CreateButton clients={data} />
       </div>
       <Card className="mt-6">
-        <ClientsTable clients={clients} />
+        <ClientsTable clients={data} />
       </Card>
     </main>
   );
