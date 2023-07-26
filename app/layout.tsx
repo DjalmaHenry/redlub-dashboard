@@ -7,7 +7,7 @@ export const metadata = {
     description: 'used oil collection management dashboard'
 };
 
-export default async function RootLayout({
+export default function RootLayout({
     children
 }: {
     children: React.ReactNode;

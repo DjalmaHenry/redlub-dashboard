@@ -19,7 +19,6 @@ export function useSearchState() {
 }
 
 export function setSearchState(newState: boolean) {
-    // Verifica se o estado é diferente
     if (searchInProgress !== newState) {
         searchInProgress = newState;
         listeners.forEach(listener => listener(searchInProgress));

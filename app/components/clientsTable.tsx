@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Table,
   TableHead,
@@ -8,12 +10,39 @@ import {
   Text
 } from '@tremor/react';
 import { Client } from '../../@types/clients';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 export default async function ClientsTable({ clients }: { clients: Client[] }) {
+
+  async function handleDeleteClient(id: number | undefined) {
+    if (typeof id === 'undefined') {
+      console.error('Client ID is undefined');
+      return;
+    }
+  
+    try {
+      const response = await fetch('/api/client/delete', { 
+        method: 'DELETE', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clientId: id })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(`Fetch error: ${error}`);
+    }
+  }  
+
   return (
     <Table>
       <TableHead>
         <TableRow>
+          <TableHeaderCell><TrashIcon className="h-5 w-5" /></TableHeaderCell>
           <TableHeaderCell>Nome</TableHeaderCell>
           <TableHeaderCell>Responsável</TableHeaderCell>
           <TableHeaderCell>E-mail</TableHeaderCell>
@@ -30,6 +59,11 @@ export default async function ClientsTable({ clients }: { clients: Client[] }) {
       <TableBody>
         {clients.map((client) => (
           <TableRow key={client.id}>
+            <TableCell>
+              <TrashIcon className="h-5 w-5 text-red-500 cursor-pointer"
+                onClick={() => handleDeleteClient(client.id)}
+              />
+            </TableCell>
             <TableCell>
               <Text>{client.name}</Text>
             </TableCell>
