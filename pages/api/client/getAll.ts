@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { Kysely } from 'kysely';
 import { PlanetScaleDialect } from 'kysely-planetscale';
 import { Client } from '../../../@types/clients';

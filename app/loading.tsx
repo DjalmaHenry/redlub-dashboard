@@ -1,13 +1,8 @@
 'use client';
 import { Title, Text } from '@tremor/react';
 import Search from './components/search';
-import { useSearchState } from './hooks/useSearchState';
 
 export default async function Loading() {
-    const searchInProgress = useSearchState();
-    if (searchInProgress) {
-        return null;
-    }
 
     return (
         <main className="p-4 md:p-10 mx-auto max-w-7xl">

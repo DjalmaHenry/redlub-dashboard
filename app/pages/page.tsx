@@ -2,8 +2,6 @@ import { Card, Title, Text } from '@tremor/react';
 import Search from '../components/search';
 import ClientsTable from '../components/clientsTable';
 import CreateButton from '../components/createButton';
-import { useSearchParams } from 'next/dist/client/components/navigation';
-import { setSearchState } from '../hooks/useSearchState';
 import { getClients } from '../../pages/api/client/getAll';
 
 export default async function IndexPage({
