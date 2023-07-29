@@ -11,6 +11,7 @@ import {
 } from '@tremor/react';
 import { Client } from '../../@types/clients';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import { deleteClient } from '../../pages/api/client/delete';
 
 export default async function ClientsTable({ clients }: { clients: Client[] }) {
 
@@ -20,22 +21,8 @@ export default async function ClientsTable({ clients }: { clients: Client[] }) {
       return;
     }
   
-    try {
-      const response = await fetch('/api/client/delete', { 
-        method: 'DELETE', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ clientId: id })
-      });
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error(`Fetch error: ${error}`);
-    }
+    await deleteClient(id); 
+    console.log('deleted');
   }  
 
   return (
